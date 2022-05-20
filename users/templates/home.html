@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+            {%block title %}
+                <title>Inicio</title>
+                <link type="text/css" rel="stylesheet" href="{% static 'styles.css' %}"/>
+            {% endblock %} 
+    </head>
+    <body>
+        {% block content %}
+        <div class="webhome">
+          {% if user.is_authenticated %}
+              <h1>Bienvenido/a, {{ user.username }}</h1>
+              <p> Bienvenido a IDface</p>
+              <a href="{% url 'logout' %}">Cerrar sesión</a>  
+          {% else %}
+              <p>Si desea ver la pagina es necesario que este registrado o este logueado</p>
+              <a href="{% url 'registro' %}">Registro</a>
+              <a href="{% url 'login' %}">Login</a>
+          {% endif %}
+      </div>
+      <!-- Cookie Consent by TermsFeed Privacy Generator https://www.TermsFeed.com -->
+  
+      {% endblock %} 
+      </body>
+</html>

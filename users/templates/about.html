@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+            {%block title %}
+                <title>Nosotros</title>
+                <link type="text/css" rel="stylesheet" href="{% static 'styles.css' %}"/>
+            {% endblock %} 
+    </head>
+    <body>
+<body>
+    {% block content %}
+    <div class="about">
+        <h3>¿Quienes somós?</h3>
+        <p>Idface es una empresa que se dedica a la creación de sistemas de reconocimiento facial, para todo usuario que
+            desee utilizar reconocimiento facial en su página.
+        </p>
+        <p>Esta empresa esta dirigida por dos ceos Selena Bravo y Michael Nuñez, que juntos han creado esta empresa.</p>
+        <p>
+            Utilizar reconocimiento facial en paginas web nos aporta grandes ventajas como: 
+            <li>Mayor seguridad, ya que al utilizar datos biométricos y no contraseñas de carácteres generales es más difícil conseguir acceder suplantando la identidad</li>
+            <li>Mayor rapidez ya que se tarda segundos en acceder al sitio web a través de reconocimiento facial</li> 
+            <li>Su utilización es muy sencilla ya que es solo poner el rostro y acceder</li>
+            <li>Mayor fiabilidad a la hora de acceder</li>
+        </p>
+    </div>
+    {% endblock %}
+</body>

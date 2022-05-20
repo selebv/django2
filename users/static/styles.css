@@ -1,0 +1,38 @@
+#idface {  
+    display: inline-block;
+    color: green;
+}
+
+.navegador {
+    height: 80px;
+    width: 100%;
+    background: url("images/fondo_nave.png") no-repeat right ;
+}
+
+.navegador ul{
+    float: right;
+    margin-right:20px;
+}
+
+.navegador ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+.navegador ul li a{
+    font-size: 18px;
+    padding: 7px 13px;
+    text-transform: capitalize;
+    text-decoration: none; 
+    color:white;
+}
+
+.navegador a:hover{
+    color: #E96161;
+}
+
+.webhome a{
+    color: black;    
+}
+

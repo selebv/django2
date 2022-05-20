@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        {%block title %}
+            <link type="text/css" rel="stylesheet" href="{% static 'styles.css' %}"/>
+        {% endblock %} 
+    </head>
+
+    <body class="body-base">
+        {% block sidebar %}
+        <div class="navegador">
+            <ul class="barra">
+                <li id="idface">IDFACE</li>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'about' %}">Sobre nosotros</a></li>
+                <li><a href="{% url 'registro' %}">Registro</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="noti {{message.tags}}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endblock %} 
+        <!-- Cookie Consent -->
+        <script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.0.0/cookie-consent.js" charset="UTF-8"></script>
+        <script type="text/javascript" charset="UTF-8">
+            document.addEventListener('DOMContentLoaded', function () {
+            cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"dark","language":"es","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false});
+            });
+        </script>
+        <div class="contenido">
+            {% block content %} {% endblock %}
+        </div>
+    </body>
+</html>
