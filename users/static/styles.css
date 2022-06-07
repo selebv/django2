@@ -1,16 +1,41 @@
+body{
+    background-color: #DFEEEE;
+}
+
+.webhome{
+    text-align: center;
+}
+
 #idface {  
     display: inline-block;
-    color: green;
+    color: white;
+    font-weight: bold;
+}
+
+#titulo{
+    font-size: 25px;
+}
+
+.linkhome{
+    font-size: 25px;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 3px;
+    background-color: #FFE08C ;
+    color: black;
 }
 
 .navegador {
-    height: 80px;
+    height: 100%;
     width: 100%;
-    background: url("images/fondo_nave.png") no-repeat right ;
+    background-color: #2B2B2B ;
+    font-size: 20px;
+
 }
 
 .navegador ul{
-    float: right;
+    float: center;
+    text-align: center;
     margin-right:20px;
 }
 
@@ -21,10 +46,10 @@
 }
 
 .navegador ul li a{
-    font-size: 18px;
+    font-size: 25px;
     padding: 7px 13px;
-    text-transform: capitalize;
-    text-decoration: none; 
+    text-transform: arial;
+    text-decoration: none;
     color:white;
 }
 
@@ -32,7 +57,57 @@
     color: #E96161;
 }
 
-.webhome a{
-    color: black;    
+.formulario{
+    border: 1px solid black;
+    border-radius: 3px;
+    text-align: center;
+    background-color: white;
+    margin-left: 250px;
+    margin-right: 250PX;;
 }
 
+.formulario label{
+    display: inline-block;
+    width: 100%;
+}
+
+#registro{
+    text-align:center;
+}
+
+#logueate{
+    text-align: center;
+}
+
+button{
+    font-size: 15px;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #FFE08C ;
+    color: black;
+}
+
+h3{
+    text-align: center;
+}
+
+#registrate{
+    text-align: center;
+}
+
+#about{
+    text-align: justify;
+    line-height: normal;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+a:hover{
+    color: #E96161;
+}
+
+a{
+    text-decoration: none;
+    color: blue;
+}
