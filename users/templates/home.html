@@ -1,28 +1,27 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %}<!--Mostrara el menu de navegación de la página-->
+{% load static %}<!--Introduciremos load static para que pueda enlazar con css la página-->
 <!DOCTYPE html>
 <html>
-    <head>
-            {%block title %}
-                <title>Inicio</title>
-                <link type="text/css" rel="stylesheet" href="{% static 'styles.css' %}"/>
-            {% endblock %} 
-    </head>
-    <body>
-        {% block content %}
-        <div class="webhome">
-          {% if user.is_authenticated %}
-              <h1>Bienvenido/a, {{ user.username }}</h1>
-              <p> Bienvenido a IDface</p>
-              <a href="{% url 'logout' %}">Cerrar sesión</a>  
-          {% else %}
-              <p>Si desea ver la pagina es necesario que este registrado o este logueado</p>
-              <a href="{% url 'registro' %}">Registro</a>
-              <a href="{% url 'login' %}">Login</a>
-          {% endif %}
-      </div>
-      <!-- Cookie Consent by TermsFeed Privacy Generator https://www.TermsFeed.com -->
-  
-      {% endblock %} 
-      </body>
+   <head>
+           {%block title %}<!--Bloque para el título,sino lo ponemos no nos mostrara el titulo-->
+               <title>Inicio</title>
+               <link type="text/css" rel="stylesheet" href="{% static 'styles.css' %}"/><!--ponemos static ya que sino no enlazará
+correctamente-->
+           {% endblock %}<!-- Cerramos boque -->
+   </head>
+   <body>
+       {% block content %}<!--Bloque para contenido de página home-->
+       <div class="webhome">
+         {% if user.is_authenticated %}<!--Si el usuario esta autentificado muestra el siguiente mensaje-->
+             <h1>Bienvenido/a, {{ user.username }}</h1>
+             <p> Bienvenido a IDface</p>
+             <a href="{% url 'logout' %}">Cerrar sesión</a>
+         {% else %}<!--Sino está autentificado mostrará este mensaje-->
+             <p id="titulo">Utiliza idface y olvidate de esperas.</p>
+             <a class="linkhome" href="{% url 'registro' %}">Registrate</a>
+             <a class="linkhome" href="{% url 'login' %}">Inicia sesion</a>
+         {% endif %}<!--Cerramos if-->
+     </div>
+      {% endblock %}<!--Cerramos bloque-->
+     </body>
 </html>
