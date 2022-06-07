@@ -2,26 +2,27 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-
-    <head>
-            {%block title %}
-                <title>Login</title>
-                <link type="text/css" rel="stylesheet" href="{% static 'styles.css' %}"/>
-            {% endblock %} 
-    </head>
-    <body>
-        {% block content %}
-
-            <h3>Login</h3>
-
-            <form action="" method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Login</button>
-            </form>
-            
-            <p>Si no tienes cuenta,registrate <a href="{% url 'registro' %}">aqui</a></p>
-      {% endblock %}
-
-      </body>
+ 
+   <head>
+           {%block title %}
+               <title>Login</title>
+               <link type="text/css" rel="stylesheet" href="{% static 'styles.css' %}"/>
+           {% endblock %}
+   </head>
+   <body>
+       {% block content %}
+ 
+           <h3>Login</h3>
+           <div class="formulario">
+           <form action="" method="POST">
+               {% csrf_token %}
+               {{ form.as_p }}<!--Se creará formulario de login automáticamente-->
+               <button type="submit">Login</button>
+           </form>
+           </div>
+         
+           <p id="registrate">Si no tienes cuenta,registrate <a href="{% url 'registro' %}">aquí</a></p>
+     {% endblock %}
+ 
+     </body>
 </html>
