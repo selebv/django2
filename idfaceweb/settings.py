@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+with open(os.environ.get('POSTGRES_USER_FILE')) as f:
+   DB_USER = f.read().strip()
+ 
+with open(os.environ.get('POSTGRES_PASSWORD_FILE')) as f:
+   DB_PASSWORD = f.read().strip()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -75,14 +82,14 @@ WSGI_APPLICATION = 'idfaceweb.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': 'db',
-        'PORT': 5432,
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'idb',
+       'USER': DB_USER,
+       'PASSWORD': DB_PASSWORD,
+       'HOST': 'db',
+       'PORT': '5432',
+       },
 }
 
 
