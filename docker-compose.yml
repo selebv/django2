@@ -1,24 +1,44 @@
-version: "3"
-   
+version: "3.9"
+ 
+secrets:  #secrets creados anteriormente, necesario ponerlo ya que hemos creado antes los secrets
+ db_user:
+   external: true
+ db_password:
+   external: true
+ 
 services:
-  db:
-    image: postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=
-      - POSTGRES_USER=
-      - POSTGRES_PASSWORD=
-  web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
-    environment:
-      - POSTGRES_NAME=
-      - POSTGRES_USER=
-      - POSTGRES_PASSWORD=
-    depends_on:
-      - db
+ db:
+   image: postgres
+   volumes:
+     - ./django2/data/:/var/lib/postgresql/data/ #ubicación en que se guardaran los datos de la base de datos
+   secrets: #introducimos los nombres de los secrets creados anteriormente
+     - db_user
+     - db_password
+   environment:
+     - POSTGRES_DB=idb
+     - POSTGRES_USER_FILE=/run/secrets/db_user #direccion en el que está guardado el secret del usuario
+     - POSTGRES_PASSWORD_FILE=/run/secrets/db_password #direccion en el que está guardado el secret del password
+ 
+ web:
+   image: selenabv/django #imagen de docker hub de django
+   volumes:
+     - ./django2/:/code/ #Ubicación donde se guarda todo sobre la web, archivos de configuración, páginas y demás...
+   command: #se ejecutarán los siguientes comandos
+     - bash
+     - -c
+     - >
+         pip install requirements.txt;
+         python manage.py runserver 0.0.0.0:8000;  
+  # instalara los paquetes de requirements y levantará el servidor
+   ports: #utilizara el puerto 8000
+     - "8000:8000"
+   secrets: #introducimos los nombres de los secrets creados anteriormente
+     - db_user
+     - db_password
+   environment:
+     - POSTGRES_NAME=idb
+     - POSTGRES_USER_FILE=/run/secrets/db_user #direccion en el que está guardado el secret del usuario
+     - POSTGRES_PASSWORD_FILE=/run/secrets/db_password #direccion en el que está guardado el secret del password
+   depends_on: #dependera de db
+     - db
+ 
